@@ -4,7 +4,7 @@
 
 A VHDL-based Pulse Width Modulation (PWM) generator designed as a reusable digital hardware subsystem for FPGA applications.
 
-The design generates a periodic digital output with a configurable duty cycle and is verified through simulation using a dedicated testbench.
+The current implementation generates a 1 kHz PWM signal with a fixed 25% duty cycle, using a 50 MHz clock derived from a 100 MHz input clock through the MMCM_50MHz clocking IP. The design is verified through simulation using a dedicated testbench.
 
 ## Design Specifications
 
@@ -33,7 +33,9 @@ The current implementation uses a 50 MHz clock generated through the `MMCM_50MHz
 
 ## Verification
 
-The design has been simulated using a VHDL testbench to check the PWM period and HIGH interval. The simulation completed without assertion errors for the tested conditions.
+The VHDL testbench checks the PWM output HIGH duration and period against the expected values of 250 µs and 1 ms, respectively. It also includes a basic reset-state assertion.
+
+Simulation completed without assertion errors under the tested conditions. Verification coverage is limited to the implemented checks and does not represent exhaustive validation.
 
 ## Integration Notes
 
